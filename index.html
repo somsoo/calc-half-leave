@@ -33,7 +33,193 @@
 
     <!-- Main Logic Container -->
     <div class="w-full max-w-2xl glass-card p-6 md:p-8 mb-8">
-        <p class='text-red-500 font-bold text-center'>서버 에러가 발생했습니다. 잠시 후 다시 시도해주세요.</p>
+        <h2 class="text-3xl font-bold mb-6 text-center text-white">반반차 휴가 영끌 계산기</h2>
+
+<div class="mb-4">
+    <label for="totalAnnualLeave" class="block text-sm font-medium text-gray-300 mb-1">총 부여된 연차 (일)</label>
+    <input type="number" id="totalAnnualLeave" class="w-full px-4 py-3 rounded-lg bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out" value="15" min="0" step="0.25">
+</div>
+
+<div class="mb-4">
+    <label for="usedFullDays" class="block text-sm font-medium text-gray-300 mb-1">사용된 연차 (일)</label>
+    <input type="number" id="usedFullDays" class="w-full px-4 py-3 rounded-lg bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out" value="0" min="0" step="0.25">
+</div>
+
+<div class="mb-4">
+    <label for="usedHalfDays" class="block text-sm font-medium text-gray-300 mb-1">사용된 반차 (회)</label>
+    <input type="number" id="usedHalfDays" class="w-full px-4 py-3 rounded-lg bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out" value="0" min="0" step="1">
+</div>
+
+<div class="mb-4">
+    <label for="usedQuarterDays" class="block text-sm font-medium text-gray-300 mb-1">사용된 반반차 (회)</label>
+    <input type="number" id="usedQuarterDays" class="w-full px-4 py-3 rounded-lg bg-gray-700 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out" value="0" min="0" step="1">
+</div>
+
+<button id="calculateBtn" class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75 transition duration-200 ease-in-out">
+    남은 휴가 계산하기
+</button>
+
+<!-- Calculation Result Area - Receipt Style -->
+<div id="resultReceipt" class="receipt mt-8 p-6 bg-white text-gray-800 rounded-lg shadow-xl border border-gray-200 relative overflow-hidden hidden font-mono">
+    <!-- Subtle gradient edges for receipt look -->
+    <div class="absolute top-0 left-0 right-0 h-4 bg-gradient-to-b from-gray-100 to-transparent opacity-50"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-4 bg-gradient-to-t from-gray-100 to-transparent opacity-50"></div>
+
+    <h3 class="text-xl font-bold mb-4 text-center">연차 영끌 계산 결과</h3>
+
+    <div class="text-sm border-t border-b border-dashed border-gray-300 py-3 my-3">
+        <div class="flex justify-between items-center mb-1">
+            <span class="text-gray-600">총 부여 연차:</span>
+            <span id="receiptTotalGranted" class="font-semibold">0일</span>
+        </div>
+        <div class="flex justify-between items-center">
+            <span class="text-gray-600">총 사용 연차:</span>
+            <span id="receiptTotalUsed" class="font-semibold">0일</span>
+        </div>
+    </div>
+
+    <div class="flex justify-between items-center text-lg font-bold text-blue-700 py-3 border-b border-dashed border-gray-300">
+        <span>남은 휴가 (총):</span>
+        <span id="receiptRemainingTotal">0일</span>
+    </div>
+
+    <div class="mt-4 text-gray-700">
+        <p class="mb-2">상세 내역:</p>
+        <ul class="list-disc pl-5">
+            <li id="receiptRemainingFull" class="mb-1">남은 연차: 0일</li>
+            <li id="receiptRemainingHalf" class="mb-1">남은 반차: 0회</li>
+            <li id="receiptRemainingQuarter">남은 반반차: 0회</li>
+        </ul>
+    </div>
+
+    <div class="text-xs text-gray-500 mt-6 text-center">
+        ----------------------------------------<br>
+        (주)휴가영끌 | 감사합니다.<br>
+        계산 일시: <span id="receiptTimestamp"></span>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const totalAnnualLeaveInput = document.getElementById('totalAnnualLeave');
+        const usedFullDaysInput = document.getElementById('usedFullDays');
+        const usedHalfDaysInput = document.getElementById('usedHalfDays');
+        const usedQuarterDaysInput = document.getElementById('usedQuarterDays');
+        const calculateBtn = document.getElementById('calculateBtn');
+        const resultReceipt = document.getElementById('resultReceipt');
+
+        // Receipt elements
+        const receiptTotalGranted = document.getElementById('receiptTotalGranted');
+        const receiptTotalUsed = document.getElementById('receiptTotalUsed');
+        const receiptRemainingTotal = document.getElementById('receiptRemainingTotal');
+        const receiptRemainingFull = document.getElementById('receiptRemainingFull');
+        const receiptRemainingHalf = document.getElementById('receiptRemainingHalf');
+        const receiptRemainingQuarter = document.getElementById('receiptRemainingQuarter');
+        const receiptTimestamp = document.getElementById('receiptTimestamp');
+
+        const calculateLeave = () => {
+            // Get values and convert to numbers. Default to 0 if input is empty or invalid.
+            const totalAnnualLeave = parseFloat(totalAnnualLeaveInput.value) || 0;
+            const usedFullDays = parseFloat(usedFullDaysInput.value) || 0;
+            const usedHalfDays = parseFloat(usedHalfDaysInput.value) || 0;
+            const usedQuarterDays = parseFloat(usedQuarterDaysInput.value) || 0;
+
+            // Basic validation: ensure inputs are non-negative
+            if (totalAnnualLeave < 0 || usedFullDays < 0 || usedHalfDays < 0 || usedQuarterDays < 0) {
+                alert('모든 휴가 관련 값은 0 이상이어야 합니다.');
+                resultReceipt.classList.add('hidden'); // Hide receipt on error
+                return;
+            }
+
+            // Calculate total used leave in full-day equivalents
+            const totalUsedInDays = usedFullDays + (usedHalfDays * 0.5) + (usedQuarterDays * 0.25);
+
+            // Calculate remaining total leave, rounded to 2 decimal places for precision with 0.25 increments
+            let remainingTotalInDays = totalAnnualLeave - totalUsedInDays;
+            remainingTotalInDays = Math.round(remainingTotalInDays * 100) / 100;
+
+            // Variables for display
+            let displayTextFullDays = 0;
+            let displayTextHalfDays = 0;
+            let displayTextQuarterDays = 0;
+            let displayTotalRemainingString = '';
+            let displayFullString = '';
+            let displayHalfString = '';
+            let displayQuarterString = '';
+
+            if (remainingTotalInDays < 0) {
+                // Handle overused leave display
+                const absoluteRemaining = Math.abs(remainingTotalInDays);
+                displayTotalRemainingString = `0일 (총 ${absoluteRemaining.toFixed(2)}일 초과 사용)`;
+
+                let tempRemainder = absoluteRemaining;
+                displayTextFullDays = Math.floor(tempRemainder);
+                tempRemainder = tempRemainder - displayTextFullDays;
+
+                displayTextHalfDays = Math.floor(tempRemainder / 0.5);
+                tempRemainder = tempRemainder - (displayTextHalfDays * 0.5);
+
+                displayTextQuarterDays = Math.floor(tempRemainder / 0.25);
+
+                displayFullString = `초과 사용 연차: ${displayTextFullDays}일`;
+                displayHalfString = `초과 사용 반차: ${displayTextHalfDays}회`;
+                displayQuarterString = `초과 사용 반반차: ${displayTextQuarterDays}회`;
+
+            } else {
+                // Standard decomposition for positive remaining leave
+                displayTotalRemainingString = `${remainingTotalInDays.toFixed(2)}일`;
+
+                let tempRemainder = remainingTotalInDays;
+                displayTextFullDays = Math.floor(tempRemainder);
+                tempRemainder = tempRemainder - displayTextFullDays;
+
+                displayTextHalfDays = Math.floor(tempRemainder / 0.5);
+                tempRemainder = tempRemainder - (displayTextHalfDays * 0.5);
+
+                displayTextQuarterDays = Math.floor(tempRemainder / 0.25);
+
+                displayFullString = `남은 연차: ${displayTextFullDays}일`;
+                displayHalfString = `남은 반차: ${displayTextHalfDays}회`;
+                displayQuarterString = `남은 반반차: ${displayTextQuarterDays}회`;
+            }
+
+            // Update receipt details
+            receiptTotalGranted.textContent = `${totalAnnualLeave}일`;
+            receiptTotalUsed.textContent = `${totalUsedInDays.toFixed(2)}일`;
+            receiptRemainingTotal.textContent = displayTotalRemainingString;
+            receiptRemainingFull.textContent = displayFullString;
+            receiptRemainingHalf.textContent = displayHalfString;
+            receiptRemainingQuarter.textContent = displayQuarterString;
+
+            // Set timestamp
+            const now = new Date();
+            receiptTimestamp.textContent = now.toLocaleString('ko-KR', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false // 24-hour format
+            });
+
+            // Show receipt
+            resultReceipt.classList.remove('hidden');
+        };
+
+        // Attach event listener to button
+        calculateBtn.addEventListener('click', calculateLeave);
+
+        // Make the calculator dynamic: recalculate on any input change
+        totalAnnualLeaveInput.addEventListener('input', calculateLeave);
+        usedFullDaysInput.addEventListener('input', calculateLeave);
+        usedHalfDaysInput.addEventListener('input', calculateLeave);
+        usedQuarterDaysInput.addEventListener('input', calculateLeave);
+
+        // Optionally, perform an initial calculation to show default values on load
+        // calculateLeave(); // Decided to keep receipt hidden until user interaction.
+    });
+</script>
     </div>
 
     <!-- Share & Ads -->
