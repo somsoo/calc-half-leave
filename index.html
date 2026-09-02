@@ -1,51 +1,53 @@
-﻿<!DOCTYPE html>
-<html lang="ko">
+<!DOCTYPE html>
+
+<html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
-    <title>諛섎컲李??닿? ?곷걣 怨꾩궛湲?| ?먰닾由??곗감쨌諛섏감 議곌린?닿렐 ?쒕??덉씠??/title>
-    <meta name="description" content="?⑥? ?먰닾由??곗감(?쒓컙 ?⑥쐞)? 諛섎컲李?2?쒓컙), 諛섏감(4?쒓컙)瑜??뚮쑑?섍쾶 履쇨컻???⑷툑 ?고쑕? 議곌린 ?닿렐 ?쇱젙??1遺??⑥쐞濡?怨꾩궛??二쇰뒗 吏곸옣???꾩닔 臾대즺 ?닿? ?뚮옒?덉엯?덈떎.">
-    <meta name="keywords" content="諛섎컲李?怨꾩궛湲? ?곗감 怨꾩궛湲? ?먰닾由??곗감, 諛섏감 履쇨컻湲? ?닿? ?곷걣, 怨듯쑕???곗감 議고빀, 吏곸옣??議곌린?닿렐, ?곗감 罹섎┛?? ?쒓컙???곗감">
+    <title>반반차 휴가 영끌 계산기 | 자투리 연차·반차 조기퇴근 시뮬레이터</title>
+    <meta name="description" content="남은 자투리 연차(시간 단위)와 반반차(2시간), 반차(4시간)를 알뜰하게 쪼개어 황금 연휴와 조기 퇴근 일정을 1분 단위로 계산해 주는 직장인 필수 무료 휴가 플래너입니다.">
+    <meta name="keywords" content="반반차 계산기, 연차 계산기, 자투리 연차, 반차 쪼개기, 휴가 영끌, 공휴일 연차 조합, 직장인 조기퇴근, 연차 캘린더, 시간제 연차">
     <link rel="canonical" href="https://calc-half-leave.enjoy-onepage.com/">
 
-    <!-- ?뚮퉬肄?& PWA 留ㅻ땲?섏뒪??-->
+    <!-- 파비콘 & PWA 매니페스트 -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <meta name="theme-color" content="#10B981">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="?닿??곷걣怨꾩궛湲?>
+    <meta name="apple-mobile-web-app-title" content="휴가영끌계산기">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <link rel="manifest" href='data:application/manifest+json,{"name":"諛섎컲李??닿? ?곷걣 怨꾩궛湲?| ?먰닾由??곗감쨌諛섏감 議곌린?닿렐 ?쒕??덉씠??,"short_name":"?닿??곷걣怨꾩궛湲?,"description":"?⑥? ?먰닾由??곗감(?쒓컙 ?⑥쐞)? 諛섎컲李?2?쒓컙), 諛섏감(4?쒓컙)瑜??뚮쑑?섍쾶 履쇨컻???⑷툑 ?고쑕? 議곌린 ?닿렐 ?쇱젙??1遺??⑥쐞濡?怨꾩궛??二쇰뒗 吏곸옣???꾩닔 臾대즺 ?닿? ?뚮옒?덉엯?덈떎.","start_url":"/","display":"standalone","theme_color":"#10B981","background_color":"#0F172A","lang":"ko","icons":[{"src":"https://calc-half-leave.enjoy-onepage.com/icon.png","sizes":"512x512","type":"image/png"}]}'>
+    <link rel="manifest" href='data:application/manifest+json,{"name":"반반차 휴가 영끌 계산기 | 자투리 연차·반차 조기퇴근 시뮬레이터","short_name":"휴가영끌계산기","description":"남은 자투리 연차(시간 단위)와 반반차(2시간), 반차(4시간)를 알뜰하게 쪼개어 황금 연휴와 조기 퇴근 일정을 1분 단위로 계산해 주는 직장인 필수 무료 휴가 플래너입니다.","start_url":"/","display":"standalone","theme_color":"#10B981","background_color":"#0F172A","lang":"ko","icons":[{"src":"https://calc-half-leave.enjoy-onepage.com/icon.png","sizes":"512x512","type":"image/png"}]}'>
 
-    <!-- ?ㅽ뵂洹몃옒??(OpenGraph) 硫뷀? ?쒓렇 -->
+    <!-- 오픈그래프 (OpenGraph) 메타 태그 -->
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="?닿??곷걣怨꾩궛湲?>
-    <meta property="og:title" content="諛섎컲李??닿? ?곷걣 怨꾩궛湲?| ?먰닾由??곗감쨌諛섏감 議곌린?닿렐 ?쒕??덉씠??>
-    <meta property="og:description" content="?⑥? ?먰닾由??곗감(?쒓컙 ?⑥쐞)? 諛섎컲李?2?쒓컙), 諛섏감(4?쒓컙)瑜??뚮쑑?섍쾶 履쇨컻???⑷툑 ?고쑕? 議곌린 ?닿렐 ?쇱젙??1遺??⑥쐞濡?怨꾩궛??二쇰뒗 吏곸옣???꾩닔 臾대즺 ?닿? ?뚮옒?덉엯?덈떎.">
+    <meta property="og:site_name" content="휴가영끌계산기">
+    <meta property="og:title" content="반반차 휴가 영끌 계산기 | 자투리 연차·반차 조기퇴근 시뮬레이터">
+    <meta property="og:description" content="남은 자투리 연차(시간 단위)와 반반차(2시간), 반차(4시간)를 알뜰하게 쪼개어 황금 연휴와 조기 퇴근 일정을 1분 단위로 계산해 주는 직장인 필수 무료 휴가 플래너입니다.">
     <meta property="og:url" content="https://calc-half-leave.enjoy-onepage.com/">
     <meta property="og:image" content="https://calc-half-leave.enjoy-onepage.com/og-image.png">
     <meta property="og:image:width" content="800">
     <meta property="og:image:height" content="800">
     <meta property="og:locale" content="ko_KR">
 
-    <!-- ?몄쐞??移대뱶 (Twitter Card) -->
+    <!-- 트위터 카드 (Twitter Card) -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="諛섎컲李??닿? ?곷걣 怨꾩궛湲?| ?먰닾由??곗감쨌諛섏감 議곌린?닿렐 ?쒕??덉씠??>
-    <meta name="twitter:description" content="?⑥? ?먰닾由??곗감(?쒓컙 ?⑥쐞)? 諛섎컲李?2?쒓컙), 諛섏감(4?쒓컙)瑜??뚮쑑?섍쾶 履쇨컻???⑷툑 ?고쑕? 議곌린 ?닿렐 ?쇱젙??1遺??⑥쐞濡?怨꾩궛??二쇰뒗 吏곸옣???꾩닔 臾대즺 ?닿? ?뚮옒?덉엯?덈떎.">
+    <meta name="twitter:title" content="반반차 휴가 영끌 계산기 | 자투리 연차·반차 조기퇴근 시뮬레이터">
+    <meta name="twitter:description" content="남은 자투리 연차(시간 단위)와 반반차(2시간), 반차(4시간)를 알뜰하게 쪼개어 황금 연휴와 조기 퇴근 일정을 1분 단위로 계산해 주는 직장인 필수 무료 휴가 플래너입니다.">
     <meta name="twitter:image" content="https://calc-half-leave.enjoy-onepage.com/og-image.png">
 
-    <!-- JSON-LD 援ъ“???곗씠??(WebApplication Schema) -->
+    <!-- JSON-LD 구조화 데이터 (WebApplication Schema) -->
     <script type="application/ld+json">
     [
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "諛섎컲李??닿? ?곷걣 怨꾩궛湲?| ?먰닾由??곗감쨌諛섏감 議곌린?닿렐 ?쒕??덉씠??,
-        "alternateName": "?닿??곷걣怨꾩궛湲?,
+        "name": "반반차 휴가 영끌 계산기 | 자투리 연차·반차 조기퇴근 시뮬레이터",
+        "alternateName": "휴가영끌계산기",
         "url": "https://calc-half-leave.enjoy-onepage.com/",
-        "description": "?⑥? ?먰닾由??곗감(?쒓컙 ?⑥쐞)? 諛섎컲李?2?쒓컙), 諛섏감(4?쒓컙)瑜??뚮쑑?섍쾶 履쇨컻???⑷툑 ?고쑕? 議곌린 ?닿렐 ?쇱젙??1遺??⑥쐞濡?怨꾩궛??二쇰뒗 吏곸옣???꾩닔 臾대즺 ?닿? ?뚮옒?덉엯?덈떎.",
+        "description": "남은 자투리 연차(시간 단위)와 반반차(2시간), 반차(4시간)를 알뜰하게 쪼개어 황금 연휴와 조기 퇴근 일정을 1분 단위로 계산해 주는 직장인 필수 무료 휴가 플래너입니다.",
         "applicationCategory": "UtilitiesApplication",
         "operatingSystem": "All",
         "inLanguage": "ko",
@@ -58,335 +60,665 @@
     ]
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); min-height: 100vh; font-family: 'Pretendard', sans-serif; }
-        .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border-radius: 20px; box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); border: 1px solid rgba(255, 255, 255, 0.18); }
-        .receipt { background: #fff; padding: 20px; border-radius: 10px; border: 1px dashed #ccc; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    <style>
+
+        body { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); min-height: 100vh; font-family: 'Pretendard', sans-serif; }
+
+        .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border-radius: 20px; box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); border: 1px solid rgba(255, 255, 255, 0.18); }
+
+        .receipt { background: #fff; padding: 20px; border-radius: 10px; border: 1px dashed #ccc; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+
     </style>
-</head>
-<body class="flex flex-col items-center justify-center p-4 sm:p-6 min-h-screen">
-    <div class="glass-card w-full max-w-3xl p-2 sm:p-4 mb-6">
-        
-        <!-- LOGIC START -->
-        <!-- 諛섎컲李??닿? ?곷걣 怨꾩궛湲??뱀빋 -->
-<div class="w-full mx-auto font-sans text-slate-800">
-  <!-- Card Container -->
-  <div class="bg-white rounded-2xl shadow-xl border border-slate-100 p-6 sm:p-10 backdrop-blur-xl bg-opacity-95">
-    
-    <!-- Header -->
-    <div class="text-center mb-8">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-600 text-xs font-bold tracking-wide uppercase mb-3 border border-emerald-100">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-        Vacation Scraper Pro
-      </div>
-      <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-        諛섎컲李??닿? ?곷걣 怨꾩궛湲??룚截?
-      </h1>
-      <p class="text-slate-500 text-sm sm:text-base mt-3">
-        ?⑥? ?먰닾由??곗감 1遺꾧퉴吏 ?뚮쑑?섍쾶 履쇨컻??議곌린 ?닿렐??留뚮뱾?대낫?몄슂!
-      </p>
-    </div>
-
-    <!-- Input Form -->
-    <form id="leaveForm" class="space-y-5" onsubmit="return false;">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <!-- ?붿뿬 ?곗감 (?? -->
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
-            ?⑥? ?곗감 (??
-          </label>
-          <div class="relative">
-            <input 
-              type="number" 
-              id="remainDays" 
-              step="0.125" 
-              min="0" 
-              placeholder="?? 3.5" 
-              class="w-full px-4 py-3 bg-slate-50 rounded-xl border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition"
-              required
-            />
-            <span class="absolute right-4 top-3.5 text-xs text-slate-400 font-bold">??/span>
-          </div>
-        </div>
-
-        <!-- ?붿뿬 ?먰닾由??쒓컙 -->
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
-            ?먰닾由??붿뿬 ?쒓컙 (?좏깮)
-          </label>
-          <div class="relative">
-            <input 
-              type="number" 
-              id="remainHours" 
-              step="0.5" 
-              min="0" 
-              max="24" 
-              placeholder="?? 2" 
-              class="w-full px-4 py-3 bg-slate-50 rounded-xl border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition"
-            />
-            <span class="absolute right-4 top-3.5 text-xs text-slate-400 font-bold">?쒓컙</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ?듭뀡 ?ㅼ젙 -->
-      <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100 space-y-3">
-        <div class="flex items-center justify-between text-xs text-slate-500 font-medium">
-          <span>?숋툘 洹쇰Т 湲곗? ?듭뀡</span>
-        </div>
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block text-[11px] font-medium text-slate-500 mb-1">1???뚯젙 洹쇰줈?쒓컙</label>
-            <select id="workHours" class="w-full px-3 py-2 bg-white rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500">
-              <option value="8" selected>8?쒓컙 湲곗? (?쇰컲)</option>
-              <option value="7">7?쒓컙 湲곗?</option>
-              <option value="4">4?쒓컙 湲곗? (?⑥떆媛?</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-[11px] font-medium text-slate-500 mb-1">諛섎컲李??몄젙 ?쒓컙</label>
-            <select id="quarterHours" class="w-full px-3 py-2 bg-white rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500">
-              <option value="2" selected>2?쒓컙 (0.25??</option>
-              <option value="1">1?쒓컙 (0.125??- ?쒖감)</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <!-- Action Button -->
-      <button 
-        type="button" 
-        id="calcBtn"
-        class="w-full py-4 bg-slate-900 hover:bg-slate-800 active:scale-[0.99] text-white rounded-2xl font-bold text-base shadow-lg shadow-slate-900/10 transition-all flex items-center justify-center gap-2 group"
-      >
-        <span>?곷걣 議고빀 怨꾩궛??諛쒗뻾</span>
-        <svg class="w-4 h-4 text-emerald-400 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-        </svg>
-      </button>
-    </form>
-
-    <!-- Receipt Area (Result) -->
-    <div class="receipt mt-8 hidden transition-all duration-500">
-      <div class="relative bg-amber-50/40 rounded-2xl p-6 sm:p-7 border border-dashed border-amber-300 font-mono text-slate-800 shadow-inner overflow-hidden">
-        
-        <!-- Receipt Top Accent -->
-        <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 bg-white border border-slate-200 rounded-full shadow-sm"></div>
-
-        <!-- Receipt Header -->
-        <div class="text-center pb-4 border-b border-dashed border-amber-300">
-          <h2 class="text-xl font-black tracking-widest text-slate-900 uppercase">OFFICE ESCAPE RECEIPT</h2>
-          <p class="text-[11px] text-slate-500 mt-1">?닿? ?곷걣 ?댁뿭??& ?덉텧 怨꾪쉷??/p>
-          <div class="text-[10px] text-slate-400 mt-2 flex justify-between px-2">
-            <span id="receiptDate">DATE: 2025-00-00</span>
-            <span>NO. #LVE-<span id="receiptCode">0000</span></span>
-          </div>
-        </div>
-
-        <!-- Summary Total Hours -->
-        <div class="py-4 border-b border-dashed border-amber-300 flex justify-between items-center bg-amber-100/50 -mx-6 px-6 sm:-mx-7 sm:px-7">
-          <span class="text-xs font-bold text-slate-600">珥??곷걣 ?붿뿬 ?쒓컙</span>
-          <span class="text-lg font-extrabold text-emerald-600"><span id="totalHoursVal">0</span> ?쒓컙 (<span id="totalDaysVal">0</span>??</span>
-        </div>
-
-        <!-- Recommended Combination Breakdown -->
-        <div class="py-4 border-b border-dashed border-amber-300 space-y-2 text-xs">
-          <div class="text-[11px] font-bold text-slate-500 mb-2 tracking-wider uppercase">???⑷툑 諛몃윴??議고빀</div>
-          <div class="flex justify-between items-center py-1">
-            <span class="text-slate-700">1. ?⑥쟾???곗감 (Full Day)</span>
-            <span class="font-bold text-slate-900"><span id="resFullDay">0</span> ??(<span id="resFullDayH">0</span>h)</span>
-          </div>
-          <div class="flex justify-between items-center py-1">
-            <span class="text-slate-700">2. 諛섏감 (Half Day / 0.5??</span>
-            <span class="font-bold text-slate-900"><span id="resHalfDay">0</span> ??(<span id="resHalfDayH">0</span>h)</span>
-          </div>
-          <div class="flex justify-between items-center py-1">
-            <span class="text-slate-700">3. 諛섎컲李?(Quarter / <span id="quarterText">2h</span>)</span>
-            <span class="font-bold text-emerald-600"><span id="resQuarterDay">0</span> ??(<span id="resQuarterDayH">0</span>h)</span>
-          </div>
-          <div class="flex justify-between items-center py-1 text-slate-400">
-            <span>4. ?먰닾由??붿뿬 ?쒓컙</span>
-            <span class="font-bold"><span id="resRemain">0</span> ?쒓컙</span>
-          </div>
-        </div>
-
-        <!-- Strategy Perks (?곷걣 ?쒖슜 ?쒕굹由ъ삤) -->
-        <div class="py-4 border-b border-dashed border-amber-300 space-y-2 text-xs">
-          <div class="text-[11px] font-bold text-slate-500 mb-2 tracking-wider uppercase">?? ?곷걣 ?덉텧 ?쒕굹由ъ삤 洹밸???/div>
-          <div class="p-3 bg-white/70 rounded-xl border border-amber-200/60 space-y-1.5">
-            <div class="flex justify-between text-slate-700">
-              <span>??諛섎컲李⑤줈留?履쇨컻??議고눜?섍린:</span>
-              <strong class="text-slate-900"><span id="maxQuarterTimes">0</span> 踰?議고눜 媛??/strong>
-            </div>
-            <div class="flex justify-between text-slate-700">
-              <span>??諛섏감濡???쾶 異쒓렐?섍린:</span>
-              <strong class="text-slate-900"><span id="maxHalfTimes">0</span> 踰???텧 媛??/strong>
-            </div>
-          </div>
-        </div>
-
-        <!-- Receipt Footer & Barcode -->
-        <div class="pt-5 text-center">
-          <p class="text-[11px] font-bold text-slate-600 tracking-wide">"?⑥? ?닿????뱀떊???뺣떦??沅뚮━?낅땲??"</p>
-          <p class="text-[9px] text-slate-400 mt-1">寃곗옱沅뚯옄???덉튂瑜?蹂댁? 留먭퀬 ?밸떦?섍쾶 ?ъ슜?섏꽭??</p>
-          
-          <!-- Realistic Barcode SVG -->
-          <div class="mt-4 flex justify-center items-center opacity-70">
-            <svg class="h-10 w-48" viewBox="0 0 190 40" fill="currentColor">
-              <rect x="0" y="0" width="4" height="40"/>
-              <rect x="6" y="0" width="2" height="40"/>
-              <rect x="10" y="0" width="6" height="40"/>
-              <rect x="18" y="0" width="2" height="40"/>
-              <rect x="22" y="0" width="4" height="40"/>
-              <rect x="28" y="0" width="8" height="40"/>
-              <rect x="38" y="0" width="2" height="40"/>
-              <rect x="42" y="0" width="4" height="40"/>
-              <rect x="48" y="0" width="6" height="40"/>
-              <rect x="56" y="0" width="2" height="40"/>
-              <rect x="60" y="0" width="8" height="40"/>
-              <rect x="70" y="0" width="4" height="40"/>
-              <rect x="76" y="0" width="2" height="40"/>
-              <rect x="80" y="0" width="6" height="40"/>
-              <rect x="88" y="0" width="4" height="40"/>
-              <rect x="94" y="0" width="8" height="40"/>
-              <rect x="104" y="0" width="2" height="40"/>
-              <rect x="108" y="0" width="6" height="40"/>
-              <rect x="116" y="0" width="4" height="40"/>
-              <rect x="122" y="0" width="2" height="40"/>
-              <rect x="126" y="0" width="8" height="40"/>
-              <rect x="136" y="0" width="4" height="40"/>
-              <rect x="142" y="0" width="2" height="40"/>
-              <rect x="146" y="0" width="6" height="40"/>
-              <rect x="154" y="0" width="4" height="40"/>
-              <rect x="160" y="0" width="8" height="40"/>
-              <rect x="170" y="0" width="2" height="40"/>
-              <rect x="174" y="0" width="4" height="40"/>
-              <rect x="180" y="0" width="6" height="40"/>
-              <rect x="188" y="0" width="2" height="40"/>
-            </svg>
-          </div>
-          <div class="text-[9px] text-slate-400 font-mono tracking-widest mt-1">THANK YOU & ENJOY YOUR VACATION</div>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const calcBtn = document.getElementById('calcBtn');
-    const receipt = document.querySelector('.receipt');
-
-    function calculate() {
-      const remainDays = parseFloat(document.getElementById('remainDays').value) || 0;
-      const remainHours = parseFloat(document.getElementById('remainHours').value) || 0;
-      const workHoursPerDay = parseFloat(document.getElementById('workHours').value) || 8;
-      const quarterUnit = parseFloat(document.getElementById('quarterHours').value) || 2;
-      const halfUnit = workHoursPerDay / 2;
-
-      if (remainDays <= 0 && remainHours <= 0) {
-        alert('?⑥? ?곗감 ?쇱닔 ?먮뒗 ?쒓컙???낅젰?댁＜?몄슂!');
-        document.getElementById('remainDays').focus();
-        return;
-      }
-
-      // 珥??쒓컙 怨꾩궛
-      const totalCalculatedHours = (remainDays * workHoursPerDay) + remainHours;
-      const totalEquivalentDays = (totalCalculatedHours / workHoursPerDay).toFixed(2);
-
-      // ?⑷툑 諛몃윴??議고빀 ?곗텧
-      let currentHours = totalCalculatedHours;
-      
-      const fullDays = Math.floor(currentHours / workHoursPerDay);
-      currentHours %= workHoursPerDay;
-
-      const halfDays = Math.floor(currentHours / halfUnit);
-      currentHours %= halfUnit;
-
-      const quarterDays = Math.floor(currentHours / quarterUnit);
-      currentHours %= quarterUnit;
-
-      const leftoverHours = Math.round(currentHours * 100) / 100;
-
-      // 洹밸????쒕굹由ъ삤
-      const maxQuarterOnly = Math.floor(totalCalculatedHours / quarterUnit);
-      const maxHalfOnly = Math.floor(totalCalculatedHours / halfUnit);
-
-      // ?곸닔利??곗씠???뚮뜑留?
-      const now = new Date();
-      const dateStr = now.getFullYear() + '-' + 
-                      String(now.getMonth() + 1).padStart(2, '0') + '-' + 
-                      String(now.getDate()).padStart(2, '0') + ' ' + 
-                      String(now.getHours()).padStart(2, '0') + ':' + 
-                      String(now.getMinutes()).padStart(2, '0');
-
-      document.getElementById('receiptDate').innerText = `DATE: ${dateStr}`;
-      document.getElementById('receiptCode').innerText = Math.floor(1000 + Math.random() * 9000);
-
-      document.getElementById('totalHoursVal').innerText = totalCalculatedHours.toFixed(1).replace(/\.0$/, '');
-      document.getElementById('totalDaysVal').innerText = totalEquivalentDays.replace(/\.00$/, '');
-
-      document.getElementById('resFullDay').innerText = fullDays;
-      document.getElementById('resFullDayH').innerText = fullDays * workHoursPerDay;
-
-      document.getElementById('resHalfDay').innerText = halfDays;
-      document.getElementById('resHalfDayH').innerText = halfDays * halfUnit;
-
-      document.getElementById('resQuarterDay').innerText = quarterDays;
-      document.getElementById('resQuarterDayH').innerText = quarterDays * quarterUnit;
-      document.getElementById('quarterText').innerText = `${quarterUnit}h`;
-
-      document.getElementById('resRemain').innerText = leftoverHours;
-
-      document.getElementById('maxQuarterTimes').innerText = maxQuarterOnly;
-      document.getElementById('maxHalfTimes').innerText = maxHalfOnly;
-
-      // ?곸닔利??쒖떆 ?좊땲硫붿씠??
-      receipt.classList.remove('hidden');
-      receipt.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-
-    calcBtn.addEventListener('click', calculate);
-
-    // Enter ?ㅻ줈??利됱떆 怨꾩궛 媛?ν븯?꾨줉 泥섎━
-    document.getElementById('remainDays').addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') calculate();
-    });
-    document.getElementById('remainHours').addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') calculate();
-    });
-  });
-</script>
-        <!-- LOGIC END -->
-        
-    </div>
-    
-    <!-- Google AdSense -->
-    <div class="w-full max-w-3xl bg-white/40 border border-white/60 rounded-2xl p-4 text-center mb-6 shadow-sm flex flex-col items-center justify-center min-h-[90px] overflow-hidden">
-        <span class="text-[10px] text-gray-500 font-semibold tracking-wider mb-2 uppercase">Advertisement</span>
-        <div class="w-full flex items-center justify-center mix-blend-multiply opacity-80">
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
-            <ins class="adsbygoogle" style="display:block; width:100%; max-height:90px;" data-ad-client="ca-pub-2228289204702106" data-ad-slot="1234567890" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({})</script>
-        </div>
-    </div>
-    
-    <!-- Web Share API Button -->
-    <button onclick="if(navigator.share) navigator.share({title: '諛섎컲李??닿? ?곷걣 怨꾩궛湲?, url: window.location.href})" class="w-full max-w-sm bg-gray-800 text-white font-bold py-4 rounded-2xl shadow-lg hover:bg-gray-700 active:scale-[0.98] transition flex justify-center items-center gap-2 mb-8">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
-        寃곌낵 怨듭쑀?섍린
-    </button>
-
-    <!-- Footer -->
-    <footer class="w-full max-w-3xl text-center pb-8 text-sm text-gray-700/70">
-        <div class="flex justify-center items-center gap-4 mb-3">
-            <a href="terms.html" class="hover:text-gray-900 transition">?댁슜?쎄?</a>
-            <span class="text-gray-400/50 text-xs">|</span>
-            <a href="privacy.html" class="hover:text-gray-900 transition font-bold">媛쒖씤?뺣낫泥섎━諛⑹묠</a>
-        </div>
-        <p class="text-xs">짤 2026 Office Escape. All rights reserved.</p>
-    </footer>
-</body>
+</head>
+
+<body class="flex flex-col items-center justify-center p-4 sm:p-6 min-h-screen">
+
+    <div class="glass-card w-full max-w-3xl p-2 sm:p-4 mb-6">
+
+        
+
+        <!-- LOGIC START -->
+
+        <!-- 반반차 휴가 영끌 계산기 웹앱 -->
+
+<div class="w-full mx-auto font-sans text-slate-800">
+
+  <!-- Card Container -->
+
+  <div class="bg-white rounded-2xl shadow-xl border border-slate-100 p-6 sm:p-10 backdrop-blur-xl bg-opacity-95">
+
+    
+
+    <!-- Header -->
+
+    <div class="text-center mb-8">
+
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-600 text-xs font-bold tracking-wide uppercase mb-3 border border-emerald-100">
+
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+
+        Vacation Scraper Pro
+
+      </div>
+
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+
+        반반차 휴가 영끌 계산기 🏖️
+
+      </h1>
+
+      <p class="text-slate-500 text-sm sm:text-base mt-3">
+
+        남은 자투리 연차 1분까지 알뜰하게 쪼개서 조기 퇴근을 만들어보세요!
+
+      </p>
+
+    </div>
+
+
+
+    <!-- Input Form -->
+
+    <form id="leaveForm" class="space-y-5" onsubmit="return false;">
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+        <!-- 잔여 연차 (일) -->
+
+        <div>
+
+          <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
+
+            남은 연차 (일)
+
+          </label>
+
+          <div class="relative">
+
+            <input 
+
+              type="number" 
+
+              id="remainDays" 
+
+              step="0.125" 
+
+              min="0" 
+
+              placeholder="예: 3.5" 
+
+              class="w-full px-4 py-3 bg-slate-50 rounded-xl border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition"
+
+              required
+
+            />
+
+            <span class="absolute right-4 top-3.5 text-xs text-slate-400 font-bold">일</span>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- 잔여 자투리 시간 -->
+
+        <div>
+
+          <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
+
+            자투리 잔여 시간 (선택)
+
+          </label>
+
+          <div class="relative">
+
+            <input 
+
+              type="number" 
+
+              id="remainHours" 
+
+              step="0.5" 
+
+              min="0" 
+
+              max="24" 
+
+              placeholder="예: 2" 
+
+              class="w-full px-4 py-3 bg-slate-50 rounded-xl border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition"
+
+            />
+
+            <span class="absolute right-4 top-3.5 text-xs text-slate-400 font-bold">시간</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- 옵션 설정 -->
+
+      <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100 space-y-3">
+
+        <div class="flex items-center justify-between text-xs text-slate-500 font-medium">
+
+          <span>⚙️ 근무 기준 옵션</span>
+
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+
+          <div>
+
+            <label class="block text-[11px] font-medium text-slate-500 mb-1">1일 소정 근로시간</label>
+
+            <select id="workHours" class="w-full px-3 py-2 bg-white rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+
+              <option value="8" selected>8시간 기준 (일반)</option>
+
+              <option value="7">7시간 기준</option>
+
+              <option value="4">4시간 기준 (단시간)</option>
+
+            </select>
+
+          </div>
+
+          <div>
+
+            <label class="block text-[11px] font-medium text-slate-500 mb-1">반반차 인정 시간</label>
+
+            <select id="quarterHours" class="w-full px-3 py-2 bg-white rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+
+              <option value="2" selected>2시간 (0.25일)</option>
+
+              <option value="1">1시간 (0.125일 - 시차)</option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- Action Button -->
+
+      <button 
+
+        type="button" 
+
+        id="calcBtn"
+
+        class="w-full py-4 bg-slate-900 hover:bg-slate-800 active:scale-[0.99] text-white rounded-2xl font-bold text-base shadow-lg shadow-slate-900/10 transition-all flex items-center justify-center gap-2 group"
+
+      >
+
+        <span>영끌 조합 계산서 발행</span>
+
+        <svg class="w-4 h-4 text-emerald-400 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+
+        </svg>
+
+      </button>
+
+    </form>
+
+
+
+    <!-- Receipt Area (Result) -->
+
+    <div class="receipt mt-8 hidden transition-all duration-500">
+
+      <div class="relative bg-amber-50/40 rounded-2xl p-6 sm:p-7 border border-dashed border-amber-300 font-mono text-slate-800 shadow-inner overflow-hidden">
+
+        
+
+        <!-- Receipt Top Accent -->
+
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 bg-white border border-slate-200 rounded-full shadow-sm"></div>
+
+
+
+        <!-- Receipt Header -->
+
+        <div class="text-center pb-4 border-b border-dashed border-amber-300">
+
+          <h2 class="text-xl font-black tracking-widest text-slate-900 uppercase">OFFICE ESCAPE RECEIPT</h2>
+
+          <p class="text-[11px] text-slate-500 mt-1">휴가 영끌 내역서 & 탈출 계획표</p>
+
+          <div class="text-[10px] text-slate-400 mt-2 flex justify-between px-2">
+
+            <span id="receiptDate">DATE: 2025-00-00</span>
+
+            <span>NO. #LVE-<span id="receiptCode">0000</span></span>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Summary Total Hours -->
+
+        <div class="py-4 border-b border-dashed border-amber-300 flex justify-between items-center bg-amber-100/50 -mx-6 px-6 sm:-mx-7 sm:px-7">
+
+          <span class="text-xs font-bold text-slate-600">총 영끌 잔여 시간</span>
+
+          <span class="text-lg font-extrabold text-emerald-600"><span id="totalHoursVal">0</span> 시간 (<span id="totalDaysVal">0</span>일)</span>
+
+        </div>
+
+
+
+        <!-- Recommended Combination Breakdown -->
+
+        <div class="py-4 border-b border-dashed border-amber-300 space-y-2 text-xs">
+
+          <div class="text-[11px] font-bold text-slate-500 mb-2 tracking-wider uppercase">✨ 황금 밸런스 조합</div>
+
+          <div class="flex justify-between items-center py-1">
+
+            <span class="text-slate-700">1. 온전한 연차 (Full Day)</span>
+
+            <span class="font-bold text-slate-900"><span id="resFullDay">0</span> 회 (<span id="resFullDayH">0</span>h)</span>
+
+          </div>
+
+          <div class="flex justify-between items-center py-1">
+
+            <span class="text-slate-700">2. 반차 (Half Day / 0.5일)</span>
+
+            <span class="font-bold text-slate-900"><span id="resHalfDay">0</span> 회 (<span id="resHalfDayH">0</span>h)</span>
+
+          </div>
+
+          <div class="flex justify-between items-center py-1">
+
+            <span class="text-slate-700">3. 반반차 (Quarter / <span id="quarterText">2h</span>)</span>
+
+            <span class="font-bold text-emerald-600"><span id="resQuarterDay">0</span> 회 (<span id="resQuarterDayH">0</span>h)</span>
+
+          </div>
+
+          <div class="flex justify-between items-center py-1 text-slate-400">
+
+            <span>4. 자투리 잔여 시간</span>
+
+            <span class="font-bold"><span id="resRemain">0</span> 시간</span>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Strategy Perks (영끌 활용 시나리오) -->
+
+        <div class="py-4 border-b border-dashed border-amber-300 space-y-2 text-xs">
+
+          <div class="text-[11px] font-bold text-slate-500 mb-2 tracking-wider uppercase">🚀 영끌 탈출 시나리오 극대화</div>
+
+          <div class="p-3 bg-white/70 rounded-xl border border-amber-200/60 space-y-1.5">
+
+            <div class="flex justify-between text-slate-700">
+
+              <span>⚡ 반반차로만 쪼개서 조퇴하기:</span>
+
+              <strong class="text-slate-900"><span id="maxQuarterTimes">0</span> 번 조퇴 가능</strong>
+
+            </div>
+
+            <div class="flex justify-between text-slate-700">
+
+              <span>☕ 반차로 늦게 출근하기:</span>
+
+              <strong class="text-slate-900"><span id="maxHalfTimes">0</span> 번 늦출 가능</strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Receipt Footer & Barcode -->
+
+        <div class="pt-5 text-center">
+
+          <p class="text-[11px] font-bold text-slate-600 tracking-wide">"남은 휴가는 당신의 정당한 권리입니다."</p>
+
+          <p class="text-[9px] text-slate-400 mt-1">결재권자의 눈치를 보지 말고 당당하게 사용하세요!</p>
+
+          
+
+          <!-- Realistic Barcode SVG -->
+
+          <div class="mt-4 flex justify-center items-center opacity-70">
+
+            <svg class="h-10 w-48" viewBox="0 0 190 40" fill="currentColor">
+
+              <rect x="0" y="0" width="4" height="40"/>
+
+              <rect x="6" y="0" width="2" height="40"/>
+
+              <rect x="10" y="0" width="6" height="40"/>
+
+              <rect x="18" y="0" width="2" height="40"/>
+
+              <rect x="22" y="0" width="4" height="40"/>
+
+              <rect x="28" y="0" width="8" height="40"/>
+
+              <rect x="38" y="0" width="2" height="40"/>
+
+              <rect x="42" y="0" width="4" height="40"/>
+
+              <rect x="48" y="0" width="6" height="40"/>
+
+              <rect x="56" y="0" width="2" height="40"/>
+
+              <rect x="60" y="0" width="8" height="40"/>
+
+              <rect x="70" y="0" width="4" height="40"/>
+
+              <rect x="76" y="0" width="2" height="40"/>
+
+              <rect x="80" y="0" width="6" height="40"/>
+
+              <rect x="88" y="0" width="4" height="40"/>
+
+              <rect x="94" y="0" width="8" height="40"/>
+
+              <rect x="104" y="0" width="2" height="40"/>
+
+              <rect x="108" y="0" width="6" height="40"/>
+
+              <rect x="116" y="0" width="4" height="40"/>
+
+              <rect x="122" y="0" width="2" height="40"/>
+
+              <rect x="126" y="0" width="8" height="40"/>
+
+              <rect x="136" y="0" width="4" height="40"/>
+
+              <rect x="142" y="0" width="2" height="40"/>
+
+              <rect x="146" y="0" width="6" height="40"/>
+
+              <rect x="154" y="0" width="4" height="40"/>
+
+              <rect x="160" y="0" width="8" height="40"/>
+
+              <rect x="170" y="0" width="2" height="40"/>
+
+              <rect x="174" y="0" width="4" height="40"/>
+
+              <rect x="180" y="0" width="6" height="40"/>
+
+              <rect x="188" y="0" width="2" height="40"/>
+
+            </svg>
+
+          </div>
+
+          <div class="text-[9px] text-slate-400 font-mono tracking-widest mt-1">THANK YOU & ENJOY YOUR VACATION</div>
+
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+</div>
+
+
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', () => {
+
+    const calcBtn = document.getElementById('calcBtn');
+
+    const receipt = document.querySelector('.receipt');
+
+
+
+    function calculate() {
+
+      const remainDays = parseFloat(document.getElementById('remainDays').value) || 0;
+
+      const remainHours = parseFloat(document.getElementById('remainHours').value) || 0;
+
+      const workHoursPerDay = parseFloat(document.getElementById('workHours').value) || 8;
+
+      const quarterUnit = parseFloat(document.getElementById('quarterHours').value) || 2;
+
+      const halfUnit = workHoursPerDay / 2;
+
+
+
+      if (remainDays <= 0 && remainHours <= 0) {
+
+        alert('남은 연차 일수 또는 시간을 입력해주세요!');
+
+        document.getElementById('remainDays').focus();
+
+        return;
+
+      }
+
+
+
+      // 총 시간 계산
+
+      const totalCalculatedHours = (remainDays * workHoursPerDay) + remainHours;
+
+      const totalEquivalentDays = (totalCalculatedHours / workHoursPerDay).toFixed(2);
+
+
+
+      // 황금 밸런스 조합 산출
+
+      let currentHours = totalCalculatedHours;
+
+      
+
+      const fullDays = Math.floor(currentHours / workHoursPerDay);
+
+      currentHours %= workHoursPerDay;
+
+
+
+      const halfDays = Math.floor(currentHours / halfUnit);
+
+      currentHours %= halfUnit;
+
+
+
+      const quarterDays = Math.floor(currentHours / quarterUnit);
+
+      currentHours %= quarterUnit;
+
+
+
+      const leftoverHours = Math.round(currentHours * 100) / 100;
+
+
+
+      // 극대화 시나리오
+
+      const maxQuarterOnly = Math.floor(totalCalculatedHours / quarterUnit);
+
+      const maxHalfOnly = Math.floor(totalCalculatedHours / halfUnit);
+
+
+
+      // 영수증 데이터 렌더링
+
+      const now = new Date();
+
+      const dateStr = now.getFullYear() + '-' + 
+
+                      String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+
+                      String(now.getDate()).padStart(2, '0') + ' ' + 
+
+                      String(now.getHours()).padStart(2, '0') + ':' + 
+
+                      String(now.getMinutes()).padStart(2, '0');
+
+
+
+      document.getElementById('receiptDate').innerText = `DATE: ${dateStr}`;
+
+      document.getElementById('receiptCode').innerText = Math.floor(1000 + Math.random() * 9000);
+
+
+
+      document.getElementById('totalHoursVal').innerText = totalCalculatedHours.toFixed(1).replace(/\.0$/, '');
+
+      document.getElementById('totalDaysVal').innerText = totalEquivalentDays.replace(/\.00$/, '');
+
+
+
+      document.getElementById('resFullDay').innerText = fullDays;
+
+      document.getElementById('resFullDayH').innerText = fullDays * workHoursPerDay;
+
+
+
+      document.getElementById('resHalfDay').innerText = halfDays;
+
+      document.getElementById('resHalfDayH').innerText = halfDays * halfUnit;
+
+
+
+      document.getElementById('resQuarterDay').innerText = quarterDays;
+
+      document.getElementById('resQuarterDayH').innerText = quarterDays * quarterUnit;
+
+      document.getElementById('quarterText').innerText = `${quarterUnit}h`;
+
+
+
+      document.getElementById('resRemain').innerText = leftoverHours;
+
+
+
+      document.getElementById('maxQuarterTimes').innerText = maxQuarterOnly;
+
+      document.getElementById('maxHalfTimes').innerText = maxHalfOnly;
+
+
+
+      // 영수증 표시 애니메이션
+
+      receipt.classList.remove('hidden');
+
+      receipt.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    }
+
+
+
+    calcBtn.addEventListener('click', calculate);
+
+
+
+    // Enter 키로도 즉시 계산 가능하도록 처리
+
+    document.getElementById('remainDays').addEventListener('keypress', (e) => {
+
+      if (e.key === 'Enter') calculate();
+
+    });
+
+    document.getElementById('remainHours').addEventListener('keypress', (e) => {
+
+      if (e.key === 'Enter') calculate();
+
+    });
+
+  });
+
+</script>
+
+        <!-- LOGIC END -->
+
+        
+
+    </div>
+
+    
+
+    <!-- Google AdSense -->
+
+    <div class="w-full max-w-3xl bg-white/40 border border-white/60 rounded-2xl p-4 text-center mb-6 shadow-sm flex flex-col items-center justify-center min-h-[90px] overflow-hidden">
+
+        <span class="text-[10px] text-gray-500 font-semibold tracking-wider mb-2 uppercase">Advertisement</span>
+
+        <div class="w-full flex items-center justify-center mix-blend-multiply opacity-80">
+
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+
+            <ins class="adsbygoogle" style="display:block; width:100%; max-height:90px;" data-ad-client="ca-pub-2228289204702106" data-ad-slot="1234567890" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+
+            <script>(adsbygoogle = window.adsbygoogle || []).push({})</script>
+
+        </div>
+
+    </div>
+
+    
+
+    <!-- Web Share API Button -->
+
+    <button onclick="if(navigator.share) navigator.share({title: '반반차 휴가 영끌 계산기', url: window.location.href})" class="w-full max-w-sm bg-gray-800 text-white font-bold py-4 rounded-2xl shadow-lg hover:bg-gray-700 active:scale-[0.98] transition flex justify-center items-center gap-2 mb-8">
+
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+
+        결과 공유하기
+
+    </button>
+
+
+
+    <!-- Footer -->
+
+    <footer class="w-full max-w-3xl text-center pb-8 text-sm text-gray-700/70">
+
+        <div class="flex justify-center items-center gap-4 mb-3">
+
+            <a href="terms.html" class="hover:text-gray-900 transition">이용약관</a>
+
+            <span class="text-gray-400/50 text-xs">|</span>
+
+            <a href="privacy.html" class="hover:text-gray-900 transition font-bold">개인정보처리방침</a>
+
+        </div>
+
+        <p class="text-xs">© 2026 Office Escape. All rights reserved.</p>
+
+    </footer>
+
+</body>
+
 </html>
