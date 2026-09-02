@@ -11,16 +11,14 @@
         .receipt { background: #fff; padding: 20px; border-radius: 10px; border: 1px dashed #ccc; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center p-4">
-    <div class="glass-card w-full max-w-md p-8 mb-6">
-        <h1 class="text-3xl font-extrabold text-center text-gray-800 mb-2">반반차 휴가 영끌 계산기</h1>
-        <p class="text-center text-gray-600 mb-8">남은 연차와 반차, 반반차를 직관적으로 계산해주는 도구입니다.</p>
+<body class="flex flex-col items-center justify-center p-4 sm:p-6 min-h-screen">
+    <div class="glass-card w-full max-w-3xl p-2 sm:p-4 mb-6">
         
         <!-- LOGIC START -->
         <!-- 반반차 휴가 영끌 계산기 웹앱 -->
-<div class="max-w-xl mx-auto p-4 sm:p-6 font-sans text-slate-800">
+<div class="w-full mx-auto font-sans text-slate-800">
   <!-- Card Container -->
-  <div class="bg-white rounded-3xl shadow-2xl border border-slate-100 p-6 sm:p-8 backdrop-blur-xl bg-opacity-95">
+  <div class="bg-white rounded-2xl shadow-xl border border-slate-100 p-6 sm:p-10 backdrop-blur-xl bg-opacity-95">
     
     <!-- Header -->
     <div class="text-center mb-8">
@@ -28,10 +26,10 @@
         <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
         Vacation Scraper Pro
       </div>
-      <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
         반반차 휴가 영끌 계산기 🏖️
       </h1>
-      <p class="text-slate-500 text-sm mt-2">
+      <p class="text-slate-500 text-sm sm:text-base mt-3">
         남은 자투리 연차 1분까지 알뜰하게 쪼개서 조기 퇴근을 만들어보세요!
       </p>
     </div>
@@ -313,16 +311,29 @@
     </div>
     
     <!-- Google AdSense -->
-    <div class="w-full max-w-md bg-white/50 rounded-lg p-2 text-center text-xs text-gray-500 mb-6">
-        <span>광고</span>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({})</script>
+    <div class="w-full max-w-3xl bg-white/40 border border-white/60 rounded-2xl p-4 text-center mb-6 shadow-sm flex flex-col items-center justify-center min-h-[90px] overflow-hidden">
+        <span class="text-[10px] text-gray-500 font-semibold tracking-wider mb-2 uppercase">Advertisement</span>
+        <div class="w-full flex items-center justify-center mix-blend-multiply opacity-80">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+            <ins class="adsbygoogle" style="display:block; width:100%; max-height:90px;" data-ad-client="ca-pub-2228289204702106" data-ad-slot="1234567890" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({})</script>
+        </div>
     </div>
     
     <!-- Web Share API Button -->
-    <button onclick="if(navigator.share) navigator.share({title: '반반차 휴가 영끌 계산기', url: window.location.href})" class="w-full max-w-md bg-gray-800 text-white font-bold py-4 rounded-full shadow-lg hover:bg-gray-700 transition flex justify-center items-center gap-2">
-        공유하기
+    <button onclick="if(navigator.share) navigator.share({title: '반반차 휴가 영끌 계산기', url: window.location.href})" class="w-full max-w-sm bg-gray-800 text-white font-bold py-4 rounded-2xl shadow-lg hover:bg-gray-700 active:scale-[0.98] transition flex justify-center items-center gap-2 mb-8">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+        결과 공유하기
     </button>
+
+    <!-- Footer -->
+    <footer class="w-full max-w-3xl text-center pb-8 text-sm text-gray-700/70">
+        <div class="flex justify-center items-center gap-4 mb-3">
+            <a href="terms.html" class="hover:text-gray-900 transition">이용약관</a>
+            <span class="text-gray-400/50 text-xs">|</span>
+            <a href="privacy.html" class="hover:text-gray-900 transition font-bold">개인정보처리방침</a>
+        </div>
+        <p class="text-xs">© 2026 Office Escape. All rights reserved.</p>
+    </footer>
 </body>
 </html>
