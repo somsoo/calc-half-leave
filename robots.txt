@@ -1,1 +1,4 @@
-User-agent: *\nAllow: /\nSitemap: https://somsoo.github.io/calc-half-leave/sitemap.xml
+User-agent: *
+Allow: /
+
+Sitemap: https://calc-half-leave.enjoy-onepage.com/sitemap.xml
