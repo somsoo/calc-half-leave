@@ -17,7 +17,297 @@
         <p class="text-center text-gray-600 mb-8">남은 연차와 반차, 반반차를 직관적으로 계산해주는 도구입니다.</p>
         
         <!-- LOGIC START -->
-        <p class='text-red-500 font-bold text-center'>허용된 모든 모델 한도 초과. 잠시 후 다시 시도해주세요.</p>
+        <!-- 반반차 휴가 영끌 계산기 웹앱 -->
+<div class="max-w-xl mx-auto p-4 sm:p-6 font-sans text-slate-800">
+  <!-- Card Container -->
+  <div class="bg-white rounded-3xl shadow-2xl border border-slate-100 p-6 sm:p-8 backdrop-blur-xl bg-opacity-95">
+    
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-600 text-xs font-bold tracking-wide uppercase mb-3 border border-emerald-100">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        Vacation Scraper Pro
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+        반반차 휴가 영끌 계산기 🏖️
+      </h1>
+      <p class="text-slate-500 text-sm mt-2">
+        남은 자투리 연차 1분까지 알뜰하게 쪼개서 조기 퇴근을 만들어보세요!
+      </p>
+    </div>
+
+    <!-- Input Form -->
+    <form id="leaveForm" class="space-y-5" onsubmit="return false;">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- 잔여 연차 (일) -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
+            남은 연차 (일)
+          </label>
+          <div class="relative">
+            <input 
+              type="number" 
+              id="remainDays" 
+              step="0.125" 
+              min="0" 
+              placeholder="예: 3.5" 
+              class="w-full px-4 py-3 bg-slate-50 rounded-xl border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition"
+              required
+            />
+            <span class="absolute right-4 top-3.5 text-xs text-slate-400 font-bold">일</span>
+          </div>
+        </div>
+
+        <!-- 잔여 자투리 시간 -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
+            자투리 잔여 시간 (선택)
+          </label>
+          <div class="relative">
+            <input 
+              type="number" 
+              id="remainHours" 
+              step="0.5" 
+              min="0" 
+              max="24" 
+              placeholder="예: 2" 
+              class="w-full px-4 py-3 bg-slate-50 rounded-xl border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition"
+            />
+            <span class="absolute right-4 top-3.5 text-xs text-slate-400 font-bold">시간</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 옵션 설정 -->
+      <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100 space-y-3">
+        <div class="flex items-center justify-between text-xs text-slate-500 font-medium">
+          <span>⚙️ 근무 기준 옵션</span>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-medium text-slate-500 mb-1">1일 소정 근로시간</label>
+            <select id="workHours" class="w-full px-3 py-2 bg-white rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+              <option value="8" selected>8시간 기준 (일반)</option>
+              <option value="7">7시간 기준</option>
+              <option value="4">4시간 기준 (단시간)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[11px] font-medium text-slate-500 mb-1">반반차 인정 시간</label>
+            <select id="quarterHours" class="w-full px-3 py-2 bg-white rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+              <option value="2" selected>2시간 (0.25일)</option>
+              <option value="1">1시간 (0.125일 - 시차)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <button 
+        type="button" 
+        id="calcBtn"
+        class="w-full py-4 bg-slate-900 hover:bg-slate-800 active:scale-[0.99] text-white rounded-2xl font-bold text-base shadow-lg shadow-slate-900/10 transition-all flex items-center justify-center gap-2 group"
+      >
+        <span>영끌 조합 계산서 발행</span>
+        <svg class="w-4 h-4 text-emerald-400 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </button>
+    </form>
+
+    <!-- Receipt Area (Result) -->
+    <div class="receipt mt-8 hidden transition-all duration-500">
+      <div class="relative bg-amber-50/40 rounded-2xl p-6 sm:p-7 border border-dashed border-amber-300 font-mono text-slate-800 shadow-inner overflow-hidden">
+        
+        <!-- Receipt Top Accent -->
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 bg-white border border-slate-200 rounded-full shadow-sm"></div>
+
+        <!-- Receipt Header -->
+        <div class="text-center pb-4 border-b border-dashed border-amber-300">
+          <h2 class="text-xl font-black tracking-widest text-slate-900 uppercase">OFFICE ESCAPE RECEIPT</h2>
+          <p class="text-[11px] text-slate-500 mt-1">휴가 영끌 내역서 & 탈출 계획표</p>
+          <div class="text-[10px] text-slate-400 mt-2 flex justify-between px-2">
+            <span id="receiptDate">DATE: 2025-00-00</span>
+            <span>NO. #LVE-<span id="receiptCode">0000</span></span>
+          </div>
+        </div>
+
+        <!-- Summary Total Hours -->
+        <div class="py-4 border-b border-dashed border-amber-300 flex justify-between items-center bg-amber-100/50 -mx-6 px-6 sm:-mx-7 sm:px-7">
+          <span class="text-xs font-bold text-slate-600">총 영끌 잔여 시간</span>
+          <span class="text-lg font-extrabold text-emerald-600"><span id="totalHoursVal">0</span> 시간 (<span id="totalDaysVal">0</span>일)</span>
+        </div>
+
+        <!-- Recommended Combination Breakdown -->
+        <div class="py-4 border-b border-dashed border-amber-300 space-y-2 text-xs">
+          <div class="text-[11px] font-bold text-slate-500 mb-2 tracking-wider uppercase">✨ 황금 밸런스 조합</div>
+          <div class="flex justify-between items-center py-1">
+            <span class="text-slate-700">1. 온전한 연차 (Full Day)</span>
+            <span class="font-bold text-slate-900"><span id="resFullDay">0</span> 회 (<span id="resFullDayH">0</span>h)</span>
+          </div>
+          <div class="flex justify-between items-center py-1">
+            <span class="text-slate-700">2. 반차 (Half Day / 0.5일)</span>
+            <span class="font-bold text-slate-900"><span id="resHalfDay">0</span> 회 (<span id="resHalfDayH">0</span>h)</span>
+          </div>
+          <div class="flex justify-between items-center py-1">
+            <span class="text-slate-700">3. 반반차 (Quarter / <span id="quarterText">2h</span>)</span>
+            <span class="font-bold text-emerald-600"><span id="resQuarterDay">0</span> 회 (<span id="resQuarterDayH">0</span>h)</span>
+          </div>
+          <div class="flex justify-between items-center py-1 text-slate-400">
+            <span>4. 자투리 잔여 시간</span>
+            <span class="font-bold"><span id="resRemain">0</span> 시간</span>
+          </div>
+        </div>
+
+        <!-- Strategy Perks (영끌 활용 시나리오) -->
+        <div class="py-4 border-b border-dashed border-amber-300 space-y-2 text-xs">
+          <div class="text-[11px] font-bold text-slate-500 mb-2 tracking-wider uppercase">🚀 영끌 탈출 시나리오 극대화</div>
+          <div class="p-3 bg-white/70 rounded-xl border border-amber-200/60 space-y-1.5">
+            <div class="flex justify-between text-slate-700">
+              <span>⚡ 반반차로만 쪼개서 조퇴하기:</span>
+              <strong class="text-slate-900"><span id="maxQuarterTimes">0</span> 번 조퇴 가능</strong>
+            </div>
+            <div class="flex justify-between text-slate-700">
+              <span>☕ 반차로 늦게 출근하기:</span>
+              <strong class="text-slate-900"><span id="maxHalfTimes">0</span> 번 늦출 가능</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Receipt Footer & Barcode -->
+        <div class="pt-5 text-center">
+          <p class="text-[11px] font-bold text-slate-600 tracking-wide">"남은 휴가는 당신의 정당한 권리입니다."</p>
+          <p class="text-[9px] text-slate-400 mt-1">결재권자의 눈치를 보지 말고 당당하게 사용하세요!</p>
+          
+          <!-- Realistic Barcode SVG -->
+          <div class="mt-4 flex justify-center items-center opacity-70">
+            <svg class="h-10 w-48" viewBox="0 0 190 40" fill="currentColor">
+              <rect x="0" y="0" width="4" height="40"/>
+              <rect x="6" y="0" width="2" height="40"/>
+              <rect x="10" y="0" width="6" height="40"/>
+              <rect x="18" y="0" width="2" height="40"/>
+              <rect x="22" y="0" width="4" height="40"/>
+              <rect x="28" y="0" width="8" height="40"/>
+              <rect x="38" y="0" width="2" height="40"/>
+              <rect x="42" y="0" width="4" height="40"/>
+              <rect x="48" y="0" width="6" height="40"/>
+              <rect x="56" y="0" width="2" height="40"/>
+              <rect x="60" y="0" width="8" height="40"/>
+              <rect x="70" y="0" width="4" height="40"/>
+              <rect x="76" y="0" width="2" height="40"/>
+              <rect x="80" y="0" width="6" height="40"/>
+              <rect x="88" y="0" width="4" height="40"/>
+              <rect x="94" y="0" width="8" height="40"/>
+              <rect x="104" y="0" width="2" height="40"/>
+              <rect x="108" y="0" width="6" height="40"/>
+              <rect x="116" y="0" width="4" height="40"/>
+              <rect x="122" y="0" width="2" height="40"/>
+              <rect x="126" y="0" width="8" height="40"/>
+              <rect x="136" y="0" width="4" height="40"/>
+              <rect x="142" y="0" width="2" height="40"/>
+              <rect x="146" y="0" width="6" height="40"/>
+              <rect x="154" y="0" width="4" height="40"/>
+              <rect x="160" y="0" width="8" height="40"/>
+              <rect x="170" y="0" width="2" height="40"/>
+              <rect x="174" y="0" width="4" height="40"/>
+              <rect x="180" y="0" width="6" height="40"/>
+              <rect x="188" y="0" width="2" height="40"/>
+            </svg>
+          </div>
+          <div class="text-[9px] text-slate-400 font-mono tracking-widest mt-1">THANK YOU & ENJOY YOUR VACATION</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const calcBtn = document.getElementById('calcBtn');
+    const receipt = document.querySelector('.receipt');
+
+    function calculate() {
+      const remainDays = parseFloat(document.getElementById('remainDays').value) || 0;
+      const remainHours = parseFloat(document.getElementById('remainHours').value) || 0;
+      const workHoursPerDay = parseFloat(document.getElementById('workHours').value) || 8;
+      const quarterUnit = parseFloat(document.getElementById('quarterHours').value) || 2;
+      const halfUnit = workHoursPerDay / 2;
+
+      if (remainDays <= 0 && remainHours <= 0) {
+        alert('남은 연차 일수 또는 시간을 입력해주세요!');
+        document.getElementById('remainDays').focus();
+        return;
+      }
+
+      // 총 시간 계산
+      const totalCalculatedHours = (remainDays * workHoursPerDay) + remainHours;
+      const totalEquivalentDays = (totalCalculatedHours / workHoursPerDay).toFixed(2);
+
+      // 황금 밸런스 조합 산출
+      let currentHours = totalCalculatedHours;
+      
+      const fullDays = Math.floor(currentHours / workHoursPerDay);
+      currentHours %= workHoursPerDay;
+
+      const halfDays = Math.floor(currentHours / halfUnit);
+      currentHours %= halfUnit;
+
+      const quarterDays = Math.floor(currentHours / quarterUnit);
+      currentHours %= quarterUnit;
+
+      const leftoverHours = Math.round(currentHours * 100) / 100;
+
+      // 극대화 시나리오
+      const maxQuarterOnly = Math.floor(totalCalculatedHours / quarterUnit);
+      const maxHalfOnly = Math.floor(totalCalculatedHours / halfUnit);
+
+      // 영수증 데이터 렌더링
+      const now = new Date();
+      const dateStr = now.getFullYear() + '-' + 
+                      String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+                      String(now.getDate()).padStart(2, '0') + ' ' + 
+                      String(now.getHours()).padStart(2, '0') + ':' + 
+                      String(now.getMinutes()).padStart(2, '0');
+
+      document.getElementById('receiptDate').innerText = `DATE: ${dateStr}`;
+      document.getElementById('receiptCode').innerText = Math.floor(1000 + Math.random() * 9000);
+
+      document.getElementById('totalHoursVal').innerText = totalCalculatedHours.toFixed(1).replace(/\.0$/, '');
+      document.getElementById('totalDaysVal').innerText = totalEquivalentDays.replace(/\.00$/, '');
+
+      document.getElementById('resFullDay').innerText = fullDays;
+      document.getElementById('resFullDayH').innerText = fullDays * workHoursPerDay;
+
+      document.getElementById('resHalfDay').innerText = halfDays;
+      document.getElementById('resHalfDayH').innerText = halfDays * halfUnit;
+
+      document.getElementById('resQuarterDay').innerText = quarterDays;
+      document.getElementById('resQuarterDayH').innerText = quarterDays * quarterUnit;
+      document.getElementById('quarterText').innerText = `${quarterUnit}h`;
+
+      document.getElementById('resRemain').innerText = leftoverHours;
+
+      document.getElementById('maxQuarterTimes').innerText = maxQuarterOnly;
+      document.getElementById('maxHalfTimes').innerText = maxHalfOnly;
+
+      // 영수증 표시 애니메이션
+      receipt.classList.remove('hidden');
+      receipt.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    calcBtn.addEventListener('click', calculate);
+
+    // Enter 키로도 즉시 계산 가능하도록 처리
+    document.getElementById('remainDays').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') calculate();
+    });
+    document.getElementById('remainHours').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') calculate();
+    });
+  });
+</script>
         <!-- LOGIC END -->
         
     </div>
