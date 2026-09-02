@@ -5,234 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>반반차 휴가 영끌 계산기</title>
     <meta name="description" content="남은 연차와 반차, 반반차를 직관적으로 계산해주는 도구입니다.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { font-family: 'Pretendard', sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9fafb; }
-        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; margin-top: 50px; }
-        h1 { color: #111827; font-size: 24px; }
-        p { color: #4b5563; line-height: 1.6; }
-        .ad-slot { width: 100%; height: 100px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; margin: 20px 0; border-radius: 10px; border: 1px dashed #9ca3af; }
-        .btn-share { background: #fee500; color: #000; padding: 15px 20px; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .coupang-banner { width: 100%; height: 80px; background: #ff3131; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-top: 20px; border-radius: 10px; cursor: pointer; }
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        body { font-family: 'Pretendard', sans-serif; background-color: #f3f4f6; color: #1f2937; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid rgba(255,255,255,0.2); }
+        .receipt { background: #fff; border: 1px dashed #d1d5db; border-radius: 0.5rem; padding: 1.5rem; position: relative; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .receipt::before, .receipt::after { content: ''; position: absolute; top: -10px; width: 20px; height: 20px; background: #f3f4f6; border-radius: 50%; }
+        .receipt::before { left: -10px; } .receipt::after { right: -10px; }
+        .btn-primary { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; transition: all 0.2s; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
     </style>
 </head>
-<body>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
-    
-    <div class="card">
-        <h1>반반차 휴가 영끌 계산기</h1>
-        <p>남은 연차와 반차, 반반차를 직관적으로 계산해주는 도구입니다.</p>
-        
-        <div id="leaveCalculatorApp" style="font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif; max-width: 400px; margin: 20px auto; padding: 15px; background-color: #f8f8fa; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #e5e5e5; box-sizing: border-box;">
-    <div style="text-align: center; margin-bottom: 20px;">
-        <h2 style="font-size: 1.8em; color: #4CAF50; margin: 0; padding: 10px; background: linear-gradient(45deg, #e0ffe0, #c0ffc0); border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: inline-block; white-space: nowrap;">반반차 휴가 영끌 계산기</h2>
-        <p style="color: #666; font-size: 0.9em; margin-top: 5px; line-height: 1.4;">남은 연차, 반차, 반반차를 회사 정책에 맞게<br/>직관적으로 계산해 보세요!</p>
+<body class="min-h-screen flex flex-col items-center py-10 px-4">
+    <!-- Header -->
+    <div class="w-full max-w-2xl text-center mb-8">
+        <h1 class="text-3xl font-extrabold text-gray-900 mb-3 tracking-tight">반반차 휴가 영끌 계산기</h1>
+        <p class="text-gray-500 font-medium">남은 연차와 반차, 반반차를 직관적으로 계산해주는 도구입니다.</p>
     </div>
 
-    <div style="background-color: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 8px 16px rgba(0,0,0,0.15); margin-bottom: 25px; border: 1px solid #eee; box-sizing: border-box;">
-        <h3 style="color: #333; margin-top: 0; margin-bottom: 20px; font-size: 1.4em;">휴가 정보 입력</h3>
-
-        <div style="margin-bottom: 15px;">
-            <label for="totalAnnual" style="display: block; font-weight: bold; margin-bottom: 8px; color: #555;">총 연차 (일)</label>
-            <input type="number" id="totalAnnual" value="15" min="0" step="0.5" style="width: calc(100% - 24px); padding: 12px 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 1.1em; appearance: textfield; box-sizing: border-box;">
-        </div>
-
-        <div style="margin-bottom: 15px;">
-            <label for="usedAnnual" style="display: block; font-weight: bold; margin-bottom: 8px; color: #555;">사용 연차 (일)</label>
-            <input type="number" id="usedAnnual" value="0" min="0" step="0.5" style="width: calc(100% - 24px); padding: 12px 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 1.1em; appearance: textfield; box-sizing: border-box;">
-        </div>
-
-        <div style="margin-bottom: 15px;">
-            <label for="usedHalf" style="display: block; font-weight: bold; margin-bottom: 8px; color: #555;">사용 반차 (개)</label>
-            <input type="number" id="usedHalf" value="0" min="0" style="width: calc(100% - 24px); padding: 12px 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 1.1em; appearance: textfield; box-sizing: border-box;">
-        </div>
-
-        <div style="margin-bottom: 20px;">
-            <label for="usedQuarter" style="display: block; font-weight: bold; margin-bottom: 8px; color: #555;">사용 반반차 (개)</label>
-            <input type="number" id="usedQuarter" value="0" min="0" style="width: calc(100% - 24px); padding: 12px 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 1.1em; appearance: textfield; box-sizing: border-box;">
-        </div>
-
-        <div style="margin-bottom: 25px; background-color: #f9f9f9; padding: 15px; border-radius: 10px; border: 1px dashed #e0e0e0; box-sizing: border-box;">
-            <label for="quarterPerHalf" style="display: block; font-weight: bold; margin-bottom: 8px; color: #555;">
-                반차 1개당 반반차 개수
-                <span style="font-size: 0.8em; color: #888; display: block; margin-top: 5px;">(예: 반차 1개 = 반반차 2개)</span>
-            </label>
-            <input type="number" id="quarterPerHalf" value="2" min="1" style="width: calc(100% - 24px); padding: 12px 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 1.1em; appearance: textfield; box-sizing: border-box;">
-        </div>
-
-        <div style="display: flex; gap: 10px;">
-            <button id="calculateBtn" style="flex: 1; padding: 15px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 10px; font-size: 1.2em; font-weight: bold; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">계산하기</button>
-            <button id="resetBtn" style="flex: 1; padding: 15px 20px; background-color: #f44336; color: white; border: none; border-radius: 10px; font-size: 1.2em; font-weight: bold; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">초기화</button>
-        </div>
+    <!-- Top AdSense -->
+    <div class="w-full max-w-2xl mb-8 bg-white rounded-lg overflow-hidden shadow-sm flex items-center justify-center min-h-[100px]">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <div id="resultArea" style="background-color: #f0f8ff; padding: 25px; border-radius: 15px; box-shadow: 0 8px 16px rgba(0,0,0,0.15); border: 1px dashed #a0d8f0; display: none; box-sizing: border-box;">
-        <h3 style="color: #007bff; margin-top: 0; margin-bottom: 20px; font-size: 1.4em; text-align: center;">💰 영끌 휴가 계산 결과 💰</h3>
-        
-        <div style="border-top: 2px dashed #a0d8f0; padding-top: 15px; margin-top: 15px;">
-            <p style="font-size: 1.1em; color: #333; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                <span style="font-weight: bold; color: #007bff;">남은 연차</span> <span id="remainingAnnual" style="font-size: 1.3em; font-weight: bold; color: #007bff;">0일</span>
-            </p>
-            <p style="font-size: 1.1em; color: #333; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                <span style="font-weight: bold; color: #007bff;">남은 반차</span> <span id="remainingHalf" style="font-size: 1.3em; font-weight: bold; color: #007bff;">0개</span>
-            </p>
-            <p style="font-size: 1.1em; color: #333; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                <span style="font-weight: bold; color: #007bff;">남은 반반차</span> <span id="remainingQuarter" style="font-size: 1.3em; font-weight: bold; color: #007bff;">0개</span>
-            </p>
-        </div>
-
-        <div style="border-top: 1px solid #e0e0e0; padding-top: 15px; margin-top: 20px; text-align: center;">
-            <p style="font-size: 1.2em; color: #4CAF50; margin-bottom: 10px; font-weight: bold;">모든 휴가를 반반차로 바꾼다면:</p>
-            <p style="font-size: 1.8em; font-weight: bold; color: #E91E63; display: flex; justify-content: center; align-items: baseline;">
-                총 <span id="totalQuarterUnits" style="font-size: 1.5em; margin: 0 8px; color: #E91E63;">0</span> 반반차! 🎉
-            </p>
-        </div>
+    <!-- Main Logic Container -->
+    <div class="w-full max-w-2xl glass-card p-6 md:p-8 mb-8">
+        <p class='text-red-500 font-bold text-center'>서버 에러가 발생했습니다. 잠시 후 다시 시도해주세요.</p>
     </div>
-</div>
 
-<script>
-    const calculateBtn = document.getElementById('calculateBtn');
-    const resetBtn = document.getElementById('resetBtn');
-    const resultArea = document.getElementById('resultArea');
-
-    const totalAnnualInput = document.getElementById('totalAnnual');
-    const usedAnnualInput = document.getElementById('usedAnnual');
-    const usedHalfInput = document.getElementById('usedHalf');
-    const usedQuarterInput = document.getElementById('usedQuarter');
-    const quarterPerHalfInput = document.getElementById('quarterPerHalf');
-
-    const remainingAnnualSpan = document.getElementById('remainingAnnual');
-    const remainingHalfSpan = document.getElementById('remainingHalf');
-    const remainingQuarterSpan = document.getElementById('remainingQuarter');
-    const totalQuarterUnitsSpan = document.getElementById('totalQuarterUnits');
-
-    function calculateLeave() {
-        // 1. Get input values and parse as numbers
-        const totalAnnual = parseFloat(totalAnnualInput.value) || 0;
-        const usedAnnual = parseFloat(usedAnnualInput.value) || 0;
-        const usedHalf = parseInt(usedHalfInput.value) || 0;
-        const usedQuarter = parseInt(usedQuarterInput.value) || 0;
-        let quarterPerHalf = parseInt(quarterPerHalfInput.value) || 2; // Default to 2 if not provided or invalid
-
-        // Input validation and sanitization
-        if (quarterPerHalf < 1) {
-            alert("⚠️ 반차 1개당 반반차 개수는 최소 1개 이상이어야 합니다. 기본값인 2로 설정됩니다.");
-            quarterPerHalf = 2;
-            quarterPerHalfInput.value = 2;
-        }
-        if (totalAnnual < 0 || usedAnnual < 0 || usedHalf < 0 || usedQuarter < 0) {
-            alert("⚠️ 휴가 값은 음수가 될 수 없습니다. 다시 확인해주세요.");
-            return;
-        }
-
-        // Convert everything to the smallest unit (반반차) for consistent calculation
-        // 1 연차 = 2 반차 = (2 * quarterPerHalf) 반반차
-        const annualToQuarterFactor = 2 * quarterPerHalf; 
-
-        // Calculate total available leave in terms of quarter-day units
-        const totalPossibleQuarterUnits = totalAnnual * annualToQuarterFactor;
-        
-        // Calculate total used leave in terms of quarter-day units
-        const totalUsedQuarterUnits = (usedAnnual * annualToQuarterFactor) + (usedHalf * quarterPerHalf) + usedQuarter;
-
-        let remainingQuarterUnits = totalPossibleQuarterUnits - totalUsedQuarterUnits;
-
-        // Ensure remaining units are not negative
-        if (remainingQuarterUnits < 0) {
-            alert("🚨 사용하신 휴가(연차, 반차, 반반차 합산)가 총 연차보다 많습니다. 값을 다시 확인해주세요.");
-            remainingQuarterUnits = 0; // Prevent negative display
-        }
-
-        // Deconstruct remainingQuarterUnits back into 연차, 반차, 반반차 for intuitive display
-        let finalRemainingAnnual = Math.floor(remainingQuarterUnits / annualToQuarterFactor);
-        let remainder = remainingQuarterUnits % annualToQuarterFactor;
-
-        let finalRemainingHalf = Math.floor(remainder / quarterPerHalf);
-        let finalRemainingQuarter = remainder % quarterPerHalf;
-
-        // Display results
-        remainingAnnualSpan.textContent = `${finalRemainingAnnual}일`;
-        remainingHalfSpan.textContent = `${finalRemainingHalf}개`;
-        remainingQuarterSpan.textContent = `${finalRemainingQuarter}개`;
-        totalQuarterUnitsSpan.textContent = remainingQuarterUnits;
-
-        resultArea.style.display = 'block'; // Show result area
-    }
-
-    function resetForm() {
-        totalAnnualInput.value = '15';
-        usedAnnualInput.value = '0';
-        usedHalfInput.value = '0';
-        usedQuarterInput.value = '0';
-        quarterPerHalfInput.value = '2';
-
-        remainingAnnualSpan.textContent = '0일';
-        remainingHalfSpan.textContent = '0개';
-        remainingQuarterSpan.textContent = '0개';
-        totalQuarterUnitsSpan.textContent = '0';
-
-        resultArea.style.display = 'none'; // Hide result area
-    }
-
-    // Event Listeners
-    calculateBtn.addEventListener('click', calculateLeave);
-    resetBtn.addEventListener('click', resetForm);
-
-    // Initial state: hide result area on load
-    document.addEventListener('DOMContentLoaded', () => {
-        resultArea.style.display = 'none';
-    });
-
-    // Add simple hover/active effects for buttons (since inline style doesn't support :hover)
-    calculateBtn.addEventListener('mouseover', function() { this.style.backgroundColor = '#43A047'; });
-    calculateBtn.addEventListener('mouseout', function() { this.style.backgroundColor = '#4CAF50'; });
-    calculateBtn.addEventListener('mousedown', function() { this.style.transform = 'scale(0.98)'; });
-    calculateBtn.addEventListener('mouseup', function() { this.style.transform = 'scale(1)'; });
-
-    resetBtn.addEventListener('mouseover', function() { this.style.backgroundColor = '#e53935'; });
-    resetBtn.addEventListener('mouseout', function() { this.style.backgroundColor = '#f44336'; });
-    resetBtn.addEventListener('mousedown', function() { this.style.transform = 'scale(0.98)'; });
-    resetBtn.addEventListener('mouseup', function() { this.style.transform = 'scale(1)'; });
-</script>
-
-        <button class="btn-share" onclick="shareApp()">
-            앱 공유하기 (Web Share API)
+    <!-- Share & Ads -->
+    <div class="w-full max-w-2xl flex flex-col gap-4 mb-10">
+        <button onclick="shareApp()" class="w-full bg-[#fee500] text-[#191919] font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-[#f4dc00] transition shadow-sm">
+            <i class="fas fa-share-nodes"></i> 카카오톡 및 SNS 공유하기
         </button>
+        <a href="#" class="w-full bg-[#ff3131] text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-[#e62c2c] transition shadow-sm">
+            <i class="fas fa-shopping-bag"></i> 쿠팡 특별 기획전 바로가기
+        </a>
     </div>
 
-    <div class="coupang-banner">쿠팡 파트너스 맞춤형 기획전 배너</div>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
-
-    <!-- JSON-LD 구조화 데이터 -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "반반차 휴가 영끌 계산기",
-      "description": "남은 연차와 반차, 반반차를 직관적으로 계산해주는 도구입니다.",
-      "applicationCategory": "UtilitiesApplication",
-      "operatingSystem": "WebBrowser"
-    }
-    </script>
+    <!-- Bottom AdSense -->
+    <div class="w-full max-w-2xl bg-white rounded-lg overflow-hidden shadow-sm flex items-center justify-center min-h-[100px]">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
     <script>
-        // 카카오 API 필요 없는 Web Share API 공유 로직
         function shareApp() {
             if (navigator.share) {
-                navigator.share({
-                    title: '반반차 휴가 영끌 계산기',
-                    text: '남은 연차와 반차, 반반차를 직관적으로 계산해주는 도구입니다.',
-                    url: window.location.href
-                }).then(() => console.log('Successful share'))
-                  .catch((error) => console.log('Error sharing', error));
+                navigator.share({ title: '반반차 휴가 영끌 계산기', text: '남은 연차와 반차, 반반차를 직관적으로 계산해주는 도구입니다.', url: window.location.href });
             } else {
                 navigator.clipboard.writeText(window.location.href);
-                alert("링크가 복사되었습니다! 카카오톡에 붙여넣기 해주세요.");
+                alert("링크가 복사되었습니다!");
             }
         }
     </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
 </body>
 </html>
