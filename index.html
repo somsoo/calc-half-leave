@@ -9,7 +9,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="index, follow" name="robots"/>
-<title>반반차 휴가 영끌 계산기 | 자투리 연차·반차 조기퇴근 시뮬레이터</title>
+<title>반반차 휴가 영끌 계산기 | 자투리 연차·반차 조기퇴근</title>
 <meta content="자투리 연차(시간 단위)와 반반차(2시간)·반차(4시간)를 쪼개 황금 연휴와 조기 퇴근 일정을 계산하는 직장인 휴가 플래너입니다." name="description"/>
 <meta content="반반차 계산기, 연차 계산기, 자투리 연차, 반차 쪼개기, 휴가 영끌, 공휴일 연차 조합, 직장인 조기퇴근, 연차 캘린더, 시간제 연차" name="keywords"/>
 <link href="https://calc-half-leave.enjoy-onepage.com/" rel="canonical"/>
@@ -25,7 +25,7 @@
 <!-- 오픈그래프 (OpenGraph) 메타 태그 -->
 <meta content="website" property="og:type"/>
 <meta content="휴가영끌계산기" property="og:site_name"/>
-<meta content="반반차 휴가 영끌 계산기 | 자투리 연차·반차 조기퇴근 시뮬레이터" property="og:title"/>
+<meta content="반반차 휴가 영끌 계산기 | 자투리 연차·반차 조기퇴근" property="og:title"/>
 <meta content="자투리 연차(시간 단위)와 반반차(2시간)·반차(4시간)를 쪼개 황금 연휴와 조기 퇴근 일정을 계산하는 직장인 휴가 플래너입니다." property="og:description"/>
 <meta content="https://calc-half-leave.enjoy-onepage.com/" property="og:url"/>
 <meta content="https://calc-half-leave.enjoy-onepage.com/og-image.png" property="og:image"/>
@@ -34,7 +34,7 @@
 <meta content="ko_KR" property="og:locale"/>
 <!-- 트위터 카드 (Twitter Card) -->
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="반반차 휴가 영끌 계산기 | 자투리 연차·반차 조기퇴근 시뮬레이터" name="twitter:title"/>
+<meta content="반반차 휴가 영끌 계산기 | 자투리 연차·반차 조기퇴근" name="twitter:title"/>
 <meta content="자투리 연차(시간 단위)와 반반차(2시간)·반차(4시간)를 쪼개 황금 연휴와 조기 퇴근 일정을 계산하는 직장인 휴가 플래너입니다." name="twitter:description"/>
 <meta content="https://calc-half-leave.enjoy-onepage.com/og-image.png" name="twitter:image"/>
 <!-- JSON-LD 구조화 데이터 (WebApplication Schema) -->
@@ -150,6 +150,25 @@
       min-height: 42px;
     }
   }
+</style>
+<script id="math-guard">
+// Global Math & DOM Output Guard: prevents NaN / Infinity leaks to UI
+(function() {
+  const origToLocaleString = Number.prototype.toLocaleString;
+  Number.prototype.toLocaleString = function(locales, options) {
+    if (!Number.isFinite(this.valueOf())) return '0';
+    return origToLocaleString.call(this, locales, options);
+  };
+  const origToFixed = Number.prototype.toFixed;
+  Number.prototype.toFixed = function(digits) {
+    if (!Number.isFinite(this.valueOf())) return '0';
+    return origToFixed.call(this, digits);
+  };
+})();
+</script>
+<style id="ad-cls-shield">
+  .ad-bottom { min-height: 280px !important; }
+  .ad-bottom ins { min-height: 280px !important; }
 </style>
 </head>
 <body class="flex flex-col items-center justify-center p-4 sm:p-6 min-h-screen">
@@ -392,7 +411,7 @@
 
       const totalCalculatedHours = (remainDays * workHoursPerDay) + remainHours;
 
-      const totalEquivalentDays = (totalCalculatedHours / workHoursPerDay).toFixed(2);
+      const totalEquivalentDays = (workHoursPerDay > 0 ? (totalCalculatedHours / workHoursPerDay) : 0).toFixed(2);
 
 
 
@@ -660,8 +679,8 @@
 <p class="text-xs">© 2026 Office Escape. All rights reserved.</p>
 </footer>
 <!-- 하단 대형 배너 (푸터 직전) -->
-<div class="manual-ad-box ad-bottom-banner" style="width: 100%; max-width: 960px; margin: 24px auto 16px; text-align: center;">
-<ins class="adsbygoogle" data-ad-client="ca-pub-2228289204702106" data-ad-format="auto" data-ad-slot="3416334507" data-full-width-responsive="true" style="display:block"></ins>
+<div class="manual-ad-box ad-bottom-banner" style="width: 100%; max-width: 960px; margin: 24px auto 16px; text-align: center;min-height:280px;">
+<ins class="adsbygoogle" data-ad-client="ca-pub-2228289204702106" data-ad-format="auto" data-ad-slot="3416334507" data-full-width-responsive="true" style="display:block;min-height:280px;"></ins>
 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 <!-- 하단 대형 배너 (푸터 직전) -->
@@ -775,7 +794,14 @@
     
 
 
-    <!-- E-E-A-T FAQ Section (16-5 헌법 준수) -->
+    <!-- ADSENSE START: mid -->
+<div class="ad-box ad-mid" style="max-width:1080px;margin:16px auto;padding:0 14px;text-align:center;">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="1186914926" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<!-- ADSENSE END: mid -->
+
+<!-- E-E-A-T FAQ Section (16-5 헌법 준수) -->
     <section class="mt-8 mb-8 space-y-3">
       <h2 class="text-xl font-bold text-gray-900 mb-4">자주 묻는 질문 (FAQ)</h2>
       <details class="bg-gray-50 p-4 rounded-xl border border-gray-200 group">
