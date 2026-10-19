@@ -383,15 +383,15 @@
 
     function calculate() {
 
-      const remainDays = parseFloat(document.getElementById('remainDays').value) || 0;
+      const remainDays = Math.max(0, parseFloat(document.getElementById('remainDays').value) || 0);
 
-      const remainHours = parseFloat(document.getElementById('remainHours').value) || 0;
+      const remainHours = Math.max(0, parseFloat(document.getElementById('remainHours').value) || 0);
 
-      const workHoursPerDay = parseFloat(document.getElementById('workHours').value) || 8;
+      const workHoursPerDay = Math.max(1, parseFloat(document.getElementById('workHours').value) || 8);
 
-      const quarterUnit = parseFloat(document.getElementById('quarterHours').value) || 2;
+      const quarterUnit = Math.max(0.5, parseFloat(document.getElementById('quarterHours').value) || 2);
 
-      const halfUnit = workHoursPerDay / 2;
+      const halfUnit = Math.max(0.5, workHoursPerDay / 2);
 
 
 
@@ -535,6 +535,15 @@
 
       if (e.key === 'Enter') calculate();
 
+    });
+
+    ['remainDays', 'remainHours', 'workHours', 'quarterHours'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('input', function() {
+        var d = parseFloat(document.getElementById('remainDays').value) || 0;
+        var h = parseFloat(document.getElementById('remainHours').value) || 0;
+        if (d > 0 || h > 0) calculate();
+      });
     });
 
   });
